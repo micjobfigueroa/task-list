@@ -12,6 +12,8 @@ loadEventListeners();
 function loadEventListeners() {
 	// Add task event
 	form.addEventListener('submit', addTask);
+	//Remove task event
+	taskList.addEventListener('click', removeTask);
 }
 
 // Add Task
@@ -42,4 +44,23 @@ function addTask(e) {
 	taskInput.value = '';
 
 	e.preventDefault();
+}
+
+/* <li class="collection-item">
+	Value
+	<a class="delete-item secondary-content">
+		<i class="fa fa-remove"></i>
+	</a>
+</li> */
+
+//Remove Task
+function removeTask(e) {
+	// console.log(e.target);
+	if (e.target.parentElement.classList.contains('delete-item')) {
+		// console.log(e.target);
+		e.target.parentElement.parentElement.remove();
+		if (confirm('Are You Sure?')) {
+			e.target.parentElement.parentElement.remove();
+		}
+	}
 }
