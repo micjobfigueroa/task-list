@@ -12,8 +12,10 @@ loadEventListeners();
 function loadEventListeners() {
 	// Add task event
 	form.addEventListener('submit', addTask);
-	//Remove task event
+	// Remove task event
 	taskList.addEventListener('click', removeTask);
+	// Clear task event
+	clearBtn.addEventListener('click', clearTasks);
 }
 
 // Add Task
@@ -64,3 +66,17 @@ function removeTask(e) {
 		}
 	}
 }
+
+// Clear Tasks
+function clearTasks() {
+	while (taskList.firstChild) {
+		taskList.removeChild(taskList.firstChild);
+	}
+	taskList.innerHTML = '';
+}
+//OR
+
+// function clearTasks() {
+// 	taskList.innerHTML = '';
+// }
+// https://jsperf.com/innerhtml-vs-removechild
